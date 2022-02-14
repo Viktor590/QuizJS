@@ -1,1 +1,31 @@
 @import 'reset';
+@import 'global';
+
+.quiz {
+  height: 100vh;
+  background: rgb(51, 123, 190);
+
+  &__wrapper {
+    border: 2px solid rgb(241, 13, 13);
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  &__block-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 300px;
+  }
+
+  &__enter-input {
+    padding: 5px;
+    margin-bottom: 20px;
+  }
+
+  &__enter-select {
+    margin-bottom: 20px;
+    padding: 5px;
+  }
+}
