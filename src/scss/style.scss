@@ -28,4 +28,41 @@
     margin-bottom: 20px;
     padding: 5px;
   }
+
+  &__question-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__question-title {
+    max-width: 300px;
+  }
+
+  &__question-length {
+    font-size: 25px;
+    color: #CCC;
+  }
+
+  &__question-item {
+    border: 2px solid rgb(13, 236, 132);
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    transition: all .3s;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      border: 2px solid #fff;
+      color: #FFF;
+      background: rgb(241, 13, 13)
+    }
+
+    &:active {
+      border: 2px solid #fff;
+      color: #fff;
+      background: rgb(245, 211, 16);
+    }
+  }
 }
