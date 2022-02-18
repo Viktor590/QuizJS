@@ -206,16 +206,58 @@ const quiz = () => {
 
   function checkAnswer(item, correctIndex, index) {
     if (index + 1 == correctIndex) {
-      item.classList.add('green')
-      answerArr.push(item);
+      setTimeout(() => {
+        item.classList.remove('quiz__question-item')
+        item.classList.add('quiz__result-text', 'green')
+        answerArr.push(item);
+        console.log(answerArr);
+      }, 1000)
       corretcScore++
-      console.log(answerArr);
     } else {
-      item.classList.add('red')
-      answerArr.push(item)
+      setTimeout(() => {
+        item.classList.remove('quiz__question-item')
+        item.classList.add('quiz__result-text', 'red')
+        answerArr.push(item)
+      }, 1000)
+
     }
   }
 
+  function showResult() {
+    clearPage();
+    const resultBlock = document.createElement('div');
+    resultBlock.classList.add('quiz__block-result');
+
+    const resultTitle = document.createElement('h2')
+    resultTitle.classList.add('quiz__result-title', 'title');
+
+    resultTitle.textContent = `Спасибо ${userName} за участие. Резульаты:`;
+    resultBlock.append(resultTitle)
+
+    const resultWrapper = document.createElement('ul');
+    resultWrapper.classList.add('quiz__result-wrapper');
+
+    const scoreNum = document.createElement('p');
+    scoreNum.classList.add('quiz__result-text')
+    scoreNum.textContent = `
+      Правильных ответов ${corretcScore} из ${answerArr.length}
+    `
+
+    const buttonEnd = document.createElement('button')
+    buttonEnd.classList.add('quiz__result-btn', 'btn');
+    buttonEnd.textContent = 'Повторить';
+    buttonEnd.addEventListener('click', showStartpage)
+
+    answerArr.forEach(el => {
+      resultWrapper.append(el)
+    })
+
+    resultBlock.append(resultWrapper);
+    resultBlock.append(scoreNum);
+    resultBlock.append(buttonEnd)
+    innerBlock.append(resultBlock)
+
+  }
 
 
 }

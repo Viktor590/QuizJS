@@ -73,22 +73,27 @@
 
   &__result-wrapper {
     margin-bottom: 30px;
-    max-height: 200px;
+    max-height: 300px;
     overflow-y: auto;
   }
 
   &__result-text {
     font-size: 25px;
     margin-bottom: 10px;
+    padding-left: 20px;
   }
 
   &__result-text.green {
-    background: rgb(11, 230, 11);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background: rgb(13, 236, 132);
     opacity: .7;
   }
 
   &__result-text.red {
-    background: rgb(236, 52, 6);
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background: rgb(241, 9, 9);
     opacity: .7;
   }
 }
