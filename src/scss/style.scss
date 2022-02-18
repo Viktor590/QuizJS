@@ -31,7 +31,6 @@
 
   &__block-question {
     min-width: 100%;
-    margin-right: 30px;
   }
 
   &__question-top {
@@ -80,7 +79,6 @@
   &__result-text {
     font-size: 25px;
     margin-bottom: 10px;
-    padding-left: 20px;
   }
 
   &__result-text.green {
@@ -88,6 +86,7 @@
     border-radius: 10px;
     background: rgb(13, 236, 132);
     opacity: .7;
+    padding-left: 10px;
   }
 
   &__result-text.red {
@@ -95,5 +94,8 @@
     border-radius: 10px;
     background: rgb(241, 9, 9);
     opacity: .7;
+    padding-left: 10px;
   }
 }
+
+@import 'media'

@@ -1,0 +1,24 @@
+@media(max-width:550px) {
+  .block {
+    width: 320px;
+  }
+
+  .title {
+    margin-bottom: 10px;
+    font-size: 25px;
+  }
+
+  .quiz {
+    &__question-top {
+      flex-wrap: wrap;
+    }
+
+    &__question-item {
+      padding: 5px 20px;
+    }
+
+    &__result-text {
+      font-size: 18px;
+    }
+  }
+}

@@ -246,7 +246,11 @@ const quiz = () => {
     const buttonEnd = document.createElement('button')
     buttonEnd.classList.add('quiz__result-btn', 'btn');
     buttonEnd.textContent = 'Повторить';
-    buttonEnd.addEventListener('click', showStartpage)
+    buttonEnd.addEventListener('click', () => {
+      setTimeout(() => {
+        location.reload()
+      }, 500)
+    })
 
     answerArr.forEach(el => {
       resultWrapper.append(el)
