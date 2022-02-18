@@ -1,15 +1,17 @@
 const quiz = () => {
 
   const innerBlock = document.querySelector('.quiz__block-enter');
-  // const questionBlock = document.querySelector('.quiz__block-question');
-  // const questionTitle = document.querySelector('.quiz__question-title');
-  // let questionList = document.querySelector('.quiz__question-list')
+
+  let questionBtn;
   let input;
   let select;
   let startBtn;
-
+  let selectValue;
   let showIndex = 0;
   let userName;
+  let corretcScore = 0;
+
+  const answerArr = [];
 
   const history = [
     {
@@ -127,29 +129,34 @@ const quiz = () => {
   startBtn.addEventListener('click', () => {
     if (input.value.length < 2) return;
     userName = input.value;
-    const selectValue = select.value
+    selectValue = select.value
     checkQuestion(selectValue)
   })
-
 
   function checkQuestion(value) {
     switch (value) {
       case 'history':
-        showQuestion(history)
+        showQuestion(history, showIndex)
         break;
 
       case 'sport':
-        showQuestion(sport)
+        showQuestion(sport.showIndex)
         break;
 
       default:
-        showQuestion(sport)
+        showQuestion(sport, showIndex)
         break;
     }
   }
 
-  function showQuestion(arr) {
+  function showQuestion(arr, index) {
     clearPage();
+
+    if (index + 1 > arr.length) {
+      clearPage();
+      showResult();
+      return
+    }
 
     const questionBlock = document.createElement('div')
     questionBlock.classList.add('quiz__block-question');
@@ -161,25 +168,55 @@ const quiz = () => {
     questionBlock.innerHTML = `
             <div class="quiz__question-top">
               <h2 class="quiz__question-title title">
-                ${arr[showIndex]['question']}
+                ${arr[index]['question']}
               </h2>
-              <p class="quiz__question-length"></p>
+              <p class="quiz__question-length">${index + 1} из ${arr.length}</p>
             </div>
+    `;
 
-    `
-    console.log(questionBlock);
-
-
-    for (let value of arr[showIndex]['option']) {
+    for (let value of arr[index]['option']) {
       const questionItem = `<li class="quiz__question-item">${value}</li>`;
       questionList.innerHTML += questionItem
     }
-
-
     showIndex++
     questionBlock.append(questionList)
+
     innerBlock.append(questionBlock)
+
+    questionBtn = document.querySelectorAll('.quiz__question-item');
+
+    console.log(index);
+    if (index + 1 > arr.length) {
+      showResult()
+    }
+    showNextQuestion(arr[index]['correctAnswer'])
+
   }
+
+  function showNextQuestion(correctAnswer) {
+    questionBtn.forEach((el, index) => {
+      el.addEventListener('click', (e) => {
+        checkAnswer(e.target, correctAnswer, index);
+        setTimeout(() => {
+          checkQuestion(selectValue, showIndex)
+        }, 1000)
+      })
+    })
+  }
+
+  function checkAnswer(item, correctIndex, index) {
+    if (index + 1 == correctIndex) {
+      item.classList.add('green')
+      answerArr.push(item);
+      corretcScore++
+      console.log(answerArr);
+    } else {
+      item.classList.add('red')
+      answerArr.push(item)
+    }
+  }
+
+
 
 }
 export default quiz;
