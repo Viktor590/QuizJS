@@ -1,9 +1,15 @@
 const quiz = () => {
 
-  const innerBlock = document.querySelector('.quiz__block-enter')
+  const innerBlock = document.querySelector('.quiz__block-enter');
+  // const questionBlock = document.querySelector('.quiz__block-question');
+  // const questionTitle = document.querySelector('.quiz__question-title');
+  // let questionList = document.querySelector('.quiz__question-list')
   let input;
   let select;
   let startBtn;
+
+  let showIndex = 0;
+  let userName;
 
   const history = [
     {
@@ -119,22 +125,61 @@ const quiz = () => {
   }
 
   startBtn.addEventListener('click', () => {
-    if (input.value.length < 2) return
+    if (input.value.length < 2) return;
+    userName = input.value;
+    const selectValue = select.value
+    checkQuestion(selectValue)
   })
+
 
   function checkQuestion(value) {
     switch (value) {
       case 'history':
+        showQuestion(history)
         break;
 
       case 'sport':
+        showQuestion(sport)
         break;
 
       default:
+        showQuestion(sport)
         break;
     }
   }
 
+  function showQuestion(arr) {
+    clearPage();
+
+    const questionBlock = document.createElement('div')
+    questionBlock.classList.add('quiz__block-question');
+
+    const questionList = document.createElement('ul');
+    questionList.classList.add('quiz__question-list')
+
+
+    questionBlock.innerHTML = `
+            <div class="quiz__question-top">
+              <h2 class="quiz__question-title title">
+                ${arr[showIndex]['question']}
+              </h2>
+              <p class="quiz__question-length"></p>
+            </div>
+
+    `
+    console.log(questionBlock);
+
+
+    for (let value of arr[showIndex]['option']) {
+      const questionItem = `<li class="quiz__question-item">${value}</li>`;
+      questionList.innerHTML += questionItem
+    }
+
+
+    showIndex++
+    questionBlock.append(questionList)
+    innerBlock.append(questionBlock)
+  }
 
 }
 export default quiz;
