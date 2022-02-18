@@ -29,6 +29,11 @@
     padding: 5px;
   }
 
+  &__block-question {
+    min-width: 100%;
+    margin-right: 30px;
+  }
+
   &__question-top {
     display: flex;
     justify-content: space-between;
@@ -64,5 +69,26 @@
       color: #fff;
       background: rgb(245, 211, 16);
     }
+  }
+
+  &__result-wrapper {
+    margin-bottom: 30px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  &__result-text {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  &__result-text.green {
+    background: rgb(11, 230, 11);
+    opacity: .7;
+  }
+
+  &__result-text.red {
+    background: rgb(236, 52, 6);
+    opacity: .7;
   }
 }

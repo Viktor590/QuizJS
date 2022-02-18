@@ -1,3 +1,5 @@
-import * as flsFunction from "./modules/functions.js";
+import quiz from "./modules/quiz.js";
 
-flsFunction.isWebp();
+window.addEventListener('DOMContentLoaded', () => {
+  quiz();
+})
