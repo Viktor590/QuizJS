@@ -140,7 +140,7 @@ const quiz = () => {
         break;
 
       case 'sport':
-        showQuestion(sport.showIndex)
+        showQuestion(sport, showIndex)
         break;
 
       default:
@@ -151,7 +151,7 @@ const quiz = () => {
 
   function showQuestion(arr, index) {
     clearPage();
-
+    console.log(arr);
     if (index + 1 > arr.length) {
       clearPage();
       showResult();
